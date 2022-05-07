@@ -3,6 +3,7 @@
 ## MVVM
 
 <img src='./images/mvvm.png' />
+
 ## Reactivity
 
 - is a programming paradigm that allows us to adjust to changes in a declarative manner.
