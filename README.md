@@ -11,3 +11,4 @@
 ## Vue Instance
 
 - `new Vue();`
+- Root Component
