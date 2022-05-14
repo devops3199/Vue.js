@@ -13,3 +13,11 @@
 
 - `new Vue();`
 - Root Component
+
+## Vue Template Syntax
+
+- a way to manipulate DOM
+- Data Binding
+  - `<div>{{ word }}</div>` aka Mustache Tag
+- Directives
+  - special attributes with `v-` prefix
