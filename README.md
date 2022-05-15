@@ -21,3 +21,11 @@
   - `<div>{{ word }}</div>` aka Mustache Tag
 - Directives
   - special attributes with `v-` prefix
+
+## watch vs computed
+
+- computed (often a better idea to use this)
+  - validation
+- watch
+  - heavy stuff
+  - fetch data
