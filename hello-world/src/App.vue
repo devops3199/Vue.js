@@ -1,28 +1,30 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <AppHeader v-bind:propsdata="title"></AppHeader>
+    <AppContent v-on:renew="renewTitle"></AppContent>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import AppHeader from "./components/AppHeader.vue";
+import AppContent from "./components/AppContent.vue";
 
 export default {
-  name: 'App',
+  data: function () {
+    return {
+      title: "hello world",
+    };
+  },
   components: {
-    HelloWorld
-  }
-}
+    AppHeader,
+    AppContent,
+  },
+  methods: {
+    renewTitle: function () {
+      this.title = "foo";
+    },
+  },
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style></style>
