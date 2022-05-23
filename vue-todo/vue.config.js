@@ -1,4 +1,14 @@
-const { defineConfig } = require('@vue/cli-service')
+const { defineConfig } = require("@vue/cli-service");
+
 module.exports = defineConfig({
-  transpileDependencies: true
-})
+  transpileDependencies: true,
+});
+
+module.exports = {
+  pages: {
+    index: {
+      entry: "src/main.js",
+      title: "Vue Todo List",
+    },
+  },
+};
