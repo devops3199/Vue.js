@@ -4,14 +4,24 @@
     <span class="addContainer" v-on:click="addTodo">
       <font-awesome-icon class="addBtn" icon="plus" />
     </span>
+    <TodoModal v-if="showModal" @close="showModal = false">
+      <h3 slot="header">Warning</h3>
+      <div slot="body">Please write something</div>
+      <div slot="footer">
+        <button @click="showModal = false">Close</button>
+      </div>
+    </TodoModal>
   </div>
 </template>
 
 <script>
+import TodoModal from "./TodoModal.vue";
+
 export default {
   data: function () {
     return {
       newTodoItem: "",
+      showModal: false,
     };
   },
   methods: {
@@ -19,11 +29,17 @@ export default {
       if (this.newTodoItem !== "") {
         this.$emit("addTodoItem", this.newTodoItem);
         this.clearInput();
+        return;
       }
+
+      this.showModal = true;
     },
     clearInput: function () {
       this.newTodoItem = "";
     },
+  },
+  components: {
+    TodoModal,
   },
 };
 </script>
