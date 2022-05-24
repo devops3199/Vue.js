@@ -28,10 +28,10 @@
 export default {
   props: ["propsdata"],
   methods: {
-    removeTodo: function (item, index) {
+    removeTodo(item, index) {
       this.$emit("removeTodoItem", item, index);
     },
-    toggleComplete: function (key, index) {
+    toggleComplete(key, index) {
       this.$emit("completeTodoItem", key, index);
     },
   },

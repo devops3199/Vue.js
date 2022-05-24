@@ -30,26 +30,26 @@ export default {
     TodoFooter,
   },
   methods: {
-    addTodoItem: function (item) {
+    addTodoItem(item) {
       localStorage.setItem(item, JSON.stringify({ completed: false, item }));
       this.todoItems.push({ completed: false, item });
     },
-    removeTodoItem: function (item, index) {
+    removeTodoItem(item, index) {
       localStorage.removeItem(item);
       this.todoItems.splice(index, 1);
     },
-    completeTodoItem: function (key, index) {
+    completeTodoItem(key, index) {
       const item = JSON.parse(localStorage.getItem(key));
       item.completed = !item.completed;
       localStorage.setItem(key, JSON.stringify(item));
       this.todoItems[index].completed = !this.todoItems[index].completed;
     },
-    clearTodoItems: function () {
+    clearTodoItems() {
       localStorage.clear();
       this.todoItems = [];
     },
   },
-  created: function () {
+  created() {
     Object.keys(localStorage).forEach((key) => {
       if (localStorage.getItem(key) !== "") {
         this.todoItems.push(JSON.parse(localStorage.getItem(key)));
