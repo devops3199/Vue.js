@@ -29,3 +29,15 @@
 - watch
   - heavy stuff
   - fetch data
+
+## Vuex
+
+- Flux Pattern & Unidirectional data flow
+- Action
+  - event or inputs from users
+- Dispatcher
+  - a way to manipulate data/store
+- Model
+  - data for view
+- View
+  - UI for users
