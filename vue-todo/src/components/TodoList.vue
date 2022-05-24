@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ul>
+    <transition-group name="list" tag="ul">
       <li class="shadow" v-bind:key="data" v-for="(data, index) in propsdata">
         <span>
           <font-awesome-icon
@@ -20,7 +20,7 @@
           <font-awesome-icon icon="trash-can" />
         </span>
       </li>
-    </ul>
+    </transition-group>
   </div>
 </template>
 
@@ -77,5 +77,18 @@ li {
 .removeBtn {
   color: #de4343;
   cursor: pointer;
+}
+
+.list-item {
+  display: inline-block;
+  margin-right: 10px;
+}
+.list-enter-active,
+.list-leave-active {
+  transition: all 1s;
+}
+.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {
+  opacity: 0;
+  transform: translateY(30px);
 }
 </style>
