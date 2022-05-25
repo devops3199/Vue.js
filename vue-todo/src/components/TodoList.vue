@@ -3,8 +3,8 @@
     <transition-group name="list" tag="ul">
       <li
         class="shadow"
-        v-bind:key="data"
-        v-for="(data, index) in this.$store.state.todoItems"
+        v-bind:key="index"
+        v-for="(data, index) in this.storedTodoItems"
       >
         <span>
           <font-awesome-icon
@@ -29,6 +29,8 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   methods: {
     removeTodo(item, index) {
@@ -37,6 +39,9 @@ export default {
     toggleComplete(key, index) {
       this.$store.commit("completeTodoItem", { key, index });
     },
+  },
+  computed: {
+    ...mapGetters(["storedTodoItems"]),
   },
 };
 </script>
