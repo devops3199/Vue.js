@@ -1,7 +1,11 @@
 <template>
   <div>
     <transition-group name="list" tag="ul">
-      <li class="shadow" v-bind:key="data" v-for="(data, index) in propsdata">
+      <li
+        class="shadow"
+        v-bind:key="data"
+        v-for="(data, index) in this.$store.state.todoItems"
+      >
         <span>
           <font-awesome-icon
             class="checkBtn"
