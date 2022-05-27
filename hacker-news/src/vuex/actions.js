@@ -1,24 +1,36 @@
-import { fetchNewsList, fetchJobsList, fetchAskList } from "../api/index.js";
+import {
+  fetchNewsList,
+  fetchJobsList,
+  fetchAskList,
+  fetchUserInfo,
+} from "../api/index.js";
 
 export default {
-  FETCH_NEWS(context) {
+  FETCH_NEWS({ commit }) {
     fetchNewsList()
       .then((response) => {
-        context.commit("SET_NEWS", { newsList: response.data });
+        commit("SET_NEWS", { newsList: response.data });
       })
       .catch((err) => console.log(err));
   },
-  FETCH_JOBS(context) {
+  FETCH_JOBS({ commit }) {
     fetchJobsList()
       .then((response) => {
-        context.commit("SET_JOBS", { jobs: response.data });
+        commit("SET_JOBS", { jobs: response.data });
       })
       .catch((err) => console.log(err));
   },
-  FETCH_ASK(context) {
+  FETCH_ASK({ commit }) {
     fetchAskList()
       .then((response) => {
-        context.commit("SET_ASK", { askList: response.data });
+        commit("SET_ASK", { askList: response.data });
+      })
+      .catch((err) => console.log(err));
+  },
+  FETCH_USER_INFO({ commit }, id) {
+    fetchUserInfo(id)
+      .then((response) => {
+        commit("SET_USER_INFO", { user: response.data });
       })
       .catch((err) => console.log(err));
   },

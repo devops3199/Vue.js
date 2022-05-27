@@ -16,4 +16,8 @@ function fetchAskList() {
   return client.get("/ask/1.json");
 }
 
-export { fetchNewsList, fetchJobsList, fetchAskList };
+function fetchUserInfo(id) {
+  return client.get(`/user/${id}.json`);
+}
+
+export { fetchNewsList, fetchJobsList, fetchAskList, fetchUserInfo };

@@ -8,4 +8,7 @@ export default {
   fetchedAskList(state) {
     return state.askList;
   },
+  fetchedUserInfo(state) {
+    return state.user;
+  },
 };

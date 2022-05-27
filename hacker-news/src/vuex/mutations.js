@@ -14,4 +14,9 @@ export default {
 
     state.askList = askList;
   },
+  SET_USER_INFO(state, payload) {
+    const { user } = payload;
+
+    state.user = user;
+  },
 };
