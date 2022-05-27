@@ -19,4 +19,9 @@ export default {
 
     state.user = user;
   },
+  SET_ITEM(state, payload) {
+    const { item } = payload;
+
+    state.item = item;
+  },
 };

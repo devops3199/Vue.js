@@ -11,4 +11,7 @@ export default {
   fetchedUserInfo(state) {
     return state.user;
   },
+  fetchedItem(state) {
+    return state.item;
+  },
 };

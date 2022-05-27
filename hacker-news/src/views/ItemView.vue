@@ -1,9 +1,24 @@
 <template>
-  <h1>Item</h1>
+  <div>
+    <h3>{{ fetchedItem.title }}</h3>
+    <p>{{ fetchedItem.content }}</p>
+  </div>
 </template>
 
 <script>
-export default {};
+import { mapGetters } from "vuex";
+
+export default {
+  computed: {
+    ...mapGetters({
+      fetchedItem: "fetchedItem",
+    }),
+  },
+  created() {
+    const { id } = this.$route.params;
+    this.$store.dispatch("FETCH_ITEM", id);
+  },
+};
 </script>
 
 <style></style>

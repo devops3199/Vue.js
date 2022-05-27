@@ -20,4 +20,8 @@ function fetchUserInfo(id) {
   return client.get(`/user/${id}.json`);
 }
 
-export { fetchNewsList, fetchJobsList, fetchAskList, fetchUserInfo };
+function fetchItem(id) {
+  return client.get(`/item/${id}.json`);
+}
+
+export { fetchNewsList, fetchJobsList, fetchAskList, fetchUserInfo, fetchItem };
