@@ -37,7 +37,7 @@ export default {
     }),
   },
   created() {
-    const { id } = this.$route.params;
+    const { id } = this.$route.query;
     this.$store.dispatch("FETCH_ITEM", id);
   },
 };
