@@ -5,6 +5,7 @@
 <script>
 import { mapGetters } from "vuex";
 import ItemList from "../components/ItemList.vue";
+import bus from "../utils/bus.js";
 
 export default {
   computed: {
@@ -13,7 +14,8 @@ export default {
     }),
   },
   created() {
-    this.$store.dispatch("FETCH_NEWS");
+    bus.$emit("start:spinner");
+    this.$store.dispatch("FETCH_NEWS").finally(() => bus.$emit("end:spinner"));
   },
   components: {
     ItemList,

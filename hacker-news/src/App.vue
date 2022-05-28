@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <TopNavigation></TopNavigation>
+    <Spinner :loading="isLoading"></Spinner>
     <transition name="fade">
       <router-view></router-view>
     </transition>
@@ -9,10 +10,34 @@
 
 <script>
 import TopNavigation from "./components/TopNavigation.vue";
+import Spinner from "./components/Spinner.vue";
+import bus from "./utils/bus.js";
 
 export default {
   components: {
     TopNavigation,
+    Spinner,
+  },
+  data() {
+    return {
+      isLoading: false,
+    };
+  },
+  methods: {
+    startSpinner() {
+      this.isLoading = true;
+    },
+    endSpinner() {
+      this.isLoading = false;
+    },
+  },
+  created() {
+    bus.$on("start:spinner", this.startSpinner);
+    bus.$on("end:spinner", this.endSpinner);
+  },
+  beforeDestroy() {
+    bus.$off("start:spinner", this.startSpinner);
+    bus.$off("end:spinner", this.endSpinner);
   },
 };
 </script>
