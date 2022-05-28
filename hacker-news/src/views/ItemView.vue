@@ -17,11 +17,16 @@
     <section>
       <div
         class="comment"
-        v-for="item in fetchedItem.comments"
-        v-bind:key="item"
+        v-for="(item, index) in fetchedItem.comments"
+        v-bind:key="index"
       >
-        <div v-html="item.content"></div>
-        <small>{{ item.time_ago }} by {{ item.user }}</small>
+        <template v-if="!!item.content">
+          <div v-html="item.content"></div>
+          <small>{{ item.time_ago }} by {{ item.user }}</small>
+        </template>
+        <div v-else>
+          <small>Deleted</small>
+        </div>
       </div>
     </section>
   </div>

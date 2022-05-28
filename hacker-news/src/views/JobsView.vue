@@ -1,5 +1,5 @@
 <template>
-  <ItemList v-bind:items="fetchedJobs"></ItemList>
+  <ItemList :items="fetchedJobs"></ItemList>
 </template>
 
 <script>
