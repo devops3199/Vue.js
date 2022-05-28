@@ -25,7 +25,12 @@ a {
   padding: 0 8px;
 }
 
-.router-link-exact-active {
+a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+a.router-link-exact-active {
   color: #354953;
 }
 </style>
