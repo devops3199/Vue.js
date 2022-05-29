@@ -9,40 +9,40 @@ import {
 
 export default {
   FETCH_NEWS({ commit }) {
-    fetchNewsList()
+    return fetchNewsList()
       .then((response) => {
         commit("SET_NEWS", { newsList: response.data });
       })
       .catch((err) => console.log(err));
   },
   FETCH_JOBS({ commit }) {
-    fetchJobsList()
+    return fetchJobsList()
       .then((response) => {
         commit("SET_JOBS", { jobs: response.data });
       })
       .catch((err) => console.log(err));
   },
   FETCH_ASK({ commit }) {
-    fetchAskList()
+    return fetchAskList()
       .then((response) => {
         commit("SET_ASK", { askList: response.data });
       })
       .catch((err) => console.log(err));
   },
   FETCH_LIST({ commit }, type) {
-    fetchList(type)
+    return fetchList(type)
       .then((response) => commit("SET_LIST", { list: response.data }))
       .catch((err) => console.log(err));
   },
   FETCH_USER_INFO({ commit }, id) {
-    fetchUserInfo(id)
+    return fetchUserInfo(id)
       .then((response) => {
         commit("SET_USER_INFO", { user: response.data });
       })
       .catch((err) => console.log(err));
   },
   FETCH_ITEM({ commit }, id) {
-    fetchItem(id)
+    return fetchItem(id)
       .then((response) => {
         commit("SET_ITEM", { item: response.data });
       })
