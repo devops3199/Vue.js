@@ -41,3 +41,21 @@
   - data for view
 - View
   - UI for users
+
+## HOC
+
+- Code Reusability
+- Old Fashion Now
+
+## Mixin
+
+- Separate Common Business Logic
+
+## Component Design Patterns
+
+- Common (props)
+- Slots
+- Controlled
+- Renderless (`createElement(x)` = `h(x)`)
+  - `this.$scopedSlots.default({ ... })` from parent
+  - `<Foo v-slots={...}>`
