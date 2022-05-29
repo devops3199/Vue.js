@@ -4,6 +4,7 @@ import {
   fetchAskList,
   fetchUserInfo,
   fetchItem,
+  fetchList,
 } from "../api/index.js";
 
 export default {
@@ -26,6 +27,11 @@ export default {
       .then((response) => {
         commit("SET_ASK", { askList: response.data });
       })
+      .catch((err) => console.log(err));
+  },
+  FETCH_LIST({ commit }, type) {
+    fetchList(type)
+      .then((response) => commit("SET_LIST", { list: response.data }))
       .catch((err) => console.log(err));
   },
   FETCH_USER_INFO({ commit }, id) {

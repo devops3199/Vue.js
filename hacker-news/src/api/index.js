@@ -16,6 +16,10 @@ function fetchAskList() {
   return client.get("/ask/1.json");
 }
 
+function fetchList(type) {
+  return client.get(`/${type}/1.json`);
+}
+
 function fetchUserInfo(id) {
   return client.get(`/user/${id}.json`);
 }
@@ -24,4 +28,11 @@ function fetchItem(id) {
   return client.get(`/item/${id}.json`);
 }
 
-export { fetchNewsList, fetchJobsList, fetchAskList, fetchUserInfo, fetchItem };
+export {
+  fetchNewsList,
+  fetchJobsList,
+  fetchAskList,
+  fetchUserInfo,
+  fetchItem,
+  fetchList,
+};

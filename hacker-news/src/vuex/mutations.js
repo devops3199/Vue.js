@@ -24,4 +24,9 @@ export default {
 
     state.item = item;
   },
+  SET_LIST(state, payload) {
+    const { list } = payload;
+
+    state.list = list;
+  },
 };

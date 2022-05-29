@@ -13,6 +13,7 @@ export const store = new Vuex.Store({
     askList: [],
     user: {},
     item: {},
+    list: [],
   },
   getters,
   mutations,
