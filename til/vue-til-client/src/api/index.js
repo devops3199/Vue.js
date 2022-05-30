@@ -6,7 +6,10 @@ const httpClient = axios.create({
 
 httpClient.interceptors.request.use(
 	config => {
-		config.headers['Authorization'] = localStorage.getItem('token');
+		if (localStorage.getItem('token')) {
+			config.headers['Authorization'] = localStorage.getItem('token');
+		}
+
 		return config;
 	},
 	error => {
@@ -22,4 +25,8 @@ function login(form) {
 	return httpClient.post('/login', form);
 }
 
-export { signUp, login };
+function fetchPosts() {
+	return httpClient.get('/posts');
+}
+
+export { signUp, login, fetchPosts };
