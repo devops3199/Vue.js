@@ -21,6 +21,11 @@ export default new VueRouter({
 			component: () => import('@/views/SignupView.vue'),
 		},
 		{
+			path: '/main',
+			// NOTE: Code Splitting
+			component: () => import('@/views/MainView.vue'),
+		},
+		{
 			path: '*',
 			// NOTE: Code Splitting
 			component: () => import('@/views/NotFoundView.vue'),

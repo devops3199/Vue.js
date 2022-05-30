@@ -35,6 +35,7 @@ export default {
 					password: this.password,
 				});
 				this.message = `${data.user.username}님 환영합니다.`;
+				this.$router.push('/main');
 			} catch (error) {
 				this.message = error.response.data;
 			} finally {
