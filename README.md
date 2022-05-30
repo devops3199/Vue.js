@@ -21,6 +21,8 @@
   - `<div>{{ word }}</div>` aka Mustache Tag
 - Directives
   - special attributes with `v-` prefix
+  - `v-on` = `@`
+  - `v-bind` = `:`
 
 ## watch vs computed
 
@@ -59,3 +61,29 @@
 - Renderless (`createElement(x)` = `h(x)`)
   - `this.$scopedSlots.default({ ... })` from parent
   - `<Foo v-slots={...}>`
+
+## Navigation Guards
+- Authorize users before enter routes
+```js
+const router = new VueRouter({
+  routes: [
+    ...
+    {
+      path: '/main',
+      component: () => import('@/views/MainView.vue'),
+      meta: { auth: true }
+
+    }
+    ...
+  ]
+});
+
+router.beforeEach((to, from, next) => {
+  if (to.meta.auth && !store.getters.isLogin) {
+    next('/login');
+    return;
+  }
+  next();
+})
+
+```
