@@ -8,22 +8,15 @@
 			<label for="password">pw: </label>
 			<input id="password" type="password" v-model="password" />
 		</div>
-		<div>
-			<label for="nickname">nickname: </label>
-			<input id="nickname" type="text" v-model="nickname" />
-		</div>
-		<button
-			:disabled="!isUsernameValid || !password || !nickname"
-			type="submit"
-		>
-			회원가입
+		<button :disabled="!isUsernameValid || !password" type="submit">
+			로그인
 		</button>
 		<p>{{ message }}</p>
 	</form>
 </template>
 
 <script>
-import { signUp } from '@/api/index';
+import { login } from '@/api/index';
 import { validateEmail } from '@/utils/validation';
 
 export default {
@@ -31,22 +24,26 @@ export default {
 		return {
 			username: '',
 			password: '',
-			nickname: '',
 			message: '',
 		};
 	},
 	methods: {
 		async submitForm() {
-			const { data } = await signUp({
-				username: this.username,
-				password: this.password,
-				nickname: this.nickname,
-			});
-			this.message = `${data.username}님이 가입되었습니다.`;
-			this.initForm();
+			try {
+				const { data } = await login({
+					username: this.username,
+					password: this.password,
+				});
+				this.message = `${data.user.username}님 환영합니다.`;
+			} catch (error) {
+				this.message = error.response.data;
+			} finally {
+				this.initForm();
+			}
 		},
 		initForm() {
-			(this.username = ''), (this.password = ''), (this.nickname = '');
+			this.username = '';
+			this.password = '';
 		},
 	},
 	computed: {
