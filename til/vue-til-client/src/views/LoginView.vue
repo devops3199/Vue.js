@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="login-container">
 		<LoginForm></LoginForm>
 	</div>
 </template>
@@ -14,4 +14,10 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.login-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+</style>

@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="signup-container">
 		<SignupForm></SignupForm>
 	</div>
 </template>
@@ -14,4 +14,10 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.signup-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+</style>

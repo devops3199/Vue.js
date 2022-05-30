@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="container">
 		<AppHeader></AppHeader>
 		<router-view></router-view>
 	</div>
@@ -16,7 +16,18 @@ export default {
 </script>
 
 <style>
+* {
+	margin: 0;
+}
+
 body {
 	font-family: 'Ubuntu', sans-serif;
+	background-color: aquamarine;
+}
+
+.container {
+	width: 450px;
+	margin: 0 auto;
+	background-color: white;
 }
 </style>

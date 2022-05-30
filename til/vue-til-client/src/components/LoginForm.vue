@@ -11,7 +11,6 @@
 		<button :disabled="!isUsernameValid || !password" type="submit">
 			로그인
 		</button>
-		<p>{{ message }}</p>
 	</form>
 </template>
 
@@ -24,7 +23,6 @@ export default {
 		return {
 			username: '',
 			password: '',
-			message: '',
 		};
 	},
 	methods: {
@@ -34,7 +32,8 @@ export default {
 					username: this.username,
 					password: this.password,
 				});
-				this.message = `${data.user.username}님 환영합니다.`;
+				localStorage.setItem('token', data.token);
+				this.$store.commit('setUsername', data.user.username);
 				this.$router.push('/main');
 			} catch (error) {
 				this.message = error.response.data;
