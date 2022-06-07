@@ -1,32 +1,24 @@
-export default {
-  SET_NEWS(state, payload) {
-    const { newsList } = payload;
+import { RootState } from './state';
 
-    state.newsList = newsList;
-  },
-  SET_JOBS(state, payload) {
-    const { jobs } = payload;
+enum Mutations {
+  SET_LIST = 'SET_LIST',
+  SET_ITEM = 'SET_ITEM',
+  SET_USER_INFO = 'SET_USER_INFO',
+}
 
-    state.jobs = jobs;
-  },
-  SET_ASK(state, payload) {
-    const { askList } = payload;
-
-    state.askList = askList;
-  },
-  SET_USER_INFO(state, payload) {
-    const { user } = payload;
-
-    state.user = user;
-  },
-  SET_ITEM(state, payload) {
-    const { item } = payload;
-
-    state.item = item;
-  },
-  SET_LIST(state, payload) {
+const mutations = {
+  [Mutations.SET_LIST] (state: RootState, payload: { list: RootState['list'] }) {
     const { list } = payload;
-
     state.list = list;
   },
-};
+  [Mutations.SET_ITEM] (state: RootState, payload: { item: RootState['item'] }) {
+    const { item } = payload;
+    state.item = item;
+  },
+  [Mutations.SET_USER_INFO] (state: RootState, payload: { user: RootState['user'] }) {
+    const { user } = payload;
+    state.user = user;
+  }
+}
+
+export { Mutations, mutations };

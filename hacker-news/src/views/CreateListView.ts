@@ -1,11 +1,13 @@
+import Vue from "vue";
 import ListView from "./ListView.vue";
-import bus from "../utils/bus.js";
+import bus from "../utils/bus";
+import { CreateElement } from "vue/types/umd";
 
-export default function createListView(name) {
+export default function createListView(name: string): any {
   return {
     name,
-    render(createElement) {
-      return createElement(ListView);
+    render(h: CreateElement) {
+      return h(ListView);
     },
     created() {
       const type = this.$route.path.replace("/", "");

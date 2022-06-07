@@ -1,51 +1,41 @@
-import {
-  fetchNewsList,
-  fetchJobsList,
-  fetchAskList,
-  fetchUserInfo,
-  fetchItem,
-  fetchList,
-} from "../api/index.js";
+import { ActionContext as XActionContext } from "vuex";
+import { RootState } from './state';
+import { mutations, Mutations } from './mutations';
+import { fetchUserInfo, fetchItem, fetchList } from "../api/index";
 
-export default {
-  FETCH_NEWS({ commit }) {
-    return fetchNewsList()
-      .then((response) => {
-        commit("SET_NEWS", { newsList: response.data });
-      })
-      .catch((err) => console.log(err));
-  },
-  FETCH_JOBS({ commit }) {
-    return fetchJobsList()
-      .then((response) => {
-        commit("SET_JOBS", { jobs: response.data });
-      })
-      .catch((err) => console.log(err));
-  },
-  FETCH_ASK({ commit }) {
-    return fetchAskList()
-      .then((response) => {
-        commit("SET_ASK", { askList: response.data });
-      })
-      .catch((err) => console.log(err));
-  },
-  FETCH_LIST({ commit }, type) {
+type ActionContext = {
+  commit<K extends keyof typeof mutations>(
+    key: K,
+    payload?: Parameters<typeof mutations[K]>[1]
+  ): ReturnType<typeof mutations[K]>;
+} & Omit<XActionContext<RootState, RootState>, "commit">;
+
+enum Actions {
+  FETCH_LIST = 'FETCH_LIST',
+  FETCH_USER_INFO = 'FETCH_USER_INFO',
+  FETCH_ITEM = 'FETCH_ITEM',
+}
+
+const actions = {
+  [Actions.FETCH_LIST] ({ commit }: { commit: ActionContext['commit'] }, type: string) {
     return fetchList(type)
-      .then((response) => commit("SET_LIST", { list: response.data }))
+      .then((response) => commit(Mutations.SET_LIST, { list: response.data }))
       .catch((err) => console.log(err));
   },
-  FETCH_USER_INFO({ commit }, id) {
+  [Actions.FETCH_USER_INFO] ({ commit }: { commit: ActionContext['commit'] }, id: number) {
     return fetchUserInfo(id)
       .then((response) => {
-        commit("SET_USER_INFO", { user: response.data });
+        commit(Mutations.SET_USER_INFO, { user: response.data });
       })
       .catch((err) => console.log(err));
   },
-  FETCH_ITEM({ commit }, id) {
+  [Actions.FETCH_ITEM] ({ commit }: { commit: ActionContext['commit'] }, id: number) {
     return fetchItem(id)
       .then((response) => {
-        commit("SET_ITEM", { item: response.data });
+        commit(Mutations.SET_ITEM, { item: response.data });
       })
       .catch((err) => console.log(err));
   },
 };
+
+export { actions, ActionContext, Actions };

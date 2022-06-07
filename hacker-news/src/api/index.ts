@@ -16,15 +16,15 @@ function fetchAskList() {
   return client.get("/ask/1.json");
 }
 
-function fetchList(type) {
+function fetchList(type: string) {
   return client.get(`/${type}/1.json`);
 }
 
-function fetchUserInfo(id) {
+function fetchUserInfo(id: number) {
   return client.get(`/user/${id}.json`);
 }
 
-function fetchItem(id) {
+function fetchItem(id: number) {
   return client.get(`/item/${id}.json`);
 }
 

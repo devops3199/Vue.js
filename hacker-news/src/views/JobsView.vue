@@ -5,7 +5,7 @@
 <script>
 import { mapGetters } from "vuex";
 import ItemList from "../components/ItemList.vue";
-import bus from "../utils/bus.js";
+import bus from "../utils/bus";
 
 export default {
   computed: {

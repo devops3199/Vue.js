@@ -1,4 +1,5 @@
-import bus from "../utils/bus.js";
+import Vue from "vue";
+import bus from "../utils/bus";
 
 export default {
   created() {
@@ -9,7 +10,7 @@ export default {
       .dispatch("FETCH_LIST", type)
       .finally(() => bus.$emit("end:spinner"));
   },
-};
+} as { created: () => void } & Pick<Vue, '$route' | '$store'>;
 
 /**
  * 아래와 같이 사용가능
