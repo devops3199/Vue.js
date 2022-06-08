@@ -20,11 +20,11 @@ function fetchList(type: string) {
   return client.get(`/${type}/1.json`);
 }
 
-function fetchUserInfo(id: number) {
+function fetchUserInfo(id: string) {
   return client.get(`/user/${id}.json`);
 }
 
-function fetchItem(id: number) {
+function fetchItem(id: string) {
   return client.get(`/item/${id}.json`);
 }
 

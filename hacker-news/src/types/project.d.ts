@@ -1,15 +1,15 @@
  import Vue, { ComponentOptions } from "vue";
- import { RootState } from "./vuex/state";
+ import { MyStore } from "../vuex/types";
  
  declare module "vue/types/options" {
    interface ComponentOptions<V extends Vue> {
-     store?: Store<RootState>;
+     store?: MyStore;
    }
  }
  
  declare module "vue/types/vue" {
    interface Vue {
-     $store: Store<RootState>;
+     $store: MyStore;
    }
  }
  

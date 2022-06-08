@@ -22,14 +22,14 @@ const actions = {
       .then((response) => commit(Mutations.SET_LIST, { list: response.data }))
       .catch((err) => console.log(err));
   },
-  [Actions.FETCH_USER_INFO] ({ commit }: { commit: ActionContext['commit'] }, id: number) {
+  [Actions.FETCH_USER_INFO] ({ commit }: { commit: ActionContext['commit'] }, id: string) {
     return fetchUserInfo(id)
       .then((response) => {
         commit(Mutations.SET_USER_INFO, { user: response.data });
       })
       .catch((err) => console.log(err));
   },
-  [Actions.FETCH_ITEM] ({ commit }: { commit: ActionContext['commit'] }, id: number) {
+  [Actions.FETCH_ITEM] ({ commit }: { commit: ActionContext['commit'] }, id: string) {
     return fetchItem(id)
       .then((response) => {
         commit(Mutations.SET_ITEM, { item: response.data });

@@ -32,20 +32,22 @@
   </div>
 </template>
 
-<script>
-import { mapGetters } from "vuex";
+<script lang='ts'>
+import Vue from 'vue';
+import { mapGetters } from 'vuex';
+import { Actions } from '../vuex/actions';
 
-export default {
+export default Vue.extend({
   computed: {
     ...mapGetters({
-      fetchedItem: "fetchedItem",
+      fetchedItem: 'fetchedItem',
     }),
   },
   created() {
     const { id } = this.$route.query;
-    this.$store.dispatch("FETCH_ITEM", id);
+    this.$store.dispatch(Actions.FETCH_LIST, id as string);
   },
-};
+});
 </script>
 
 <style scoped>

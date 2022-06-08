@@ -7,7 +7,7 @@ import { actions } from "./actions";
 
 Vue.use(Vuex);
 
-export const store = new Vuex.Store({
+export const store= new Vuex.Store({
   state,
   getters,
   mutations,
